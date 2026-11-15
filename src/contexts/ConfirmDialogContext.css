@@ -1,0 +1,19 @@
+.confirm-dialog-message {
+  margin: 0 0 20px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.confirm-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .confirm-dialog-actions > .btn {
+    flex: 1;
+    min-height: 44px;
+  }
+}

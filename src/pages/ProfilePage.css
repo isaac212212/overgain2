@@ -1,0 +1,1983 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Profile Header Card
+   ========================================================================== */
+.profile-header-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-header-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "avatar meta"
+    "counts counts";
+  align-items: center;
+  gap: var(--space-md) var(--space-xl);
+}
+
+.profile-avatar {
+  grid-area: avatar;
+  border: 3px solid var(--accent);
+}
+
+.profile-meta-info {
+  grid-area: meta;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.profile-header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profile-username {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.profile-fullname {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.profile-social-counts {
+  grid-area: counts;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  min-height: 64px;
+  padding: 8px 6px;
+  text-align: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.count-item strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.count-item span {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.25;
+}
+
+.text-flame {
+  color: #f97316 !important;
+}
+
+.profile-frequency-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.profile-frequency-goal {
+  padding: 7px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.profile-frequency-goal:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.profile-frequency-streaks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.profile-frequency-streak {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  min-width: 0;
+  align-items: center;
+  gap: 4px 7px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: linear-gradient(120deg, rgba(249, 115, 22, 0.08), var(--bg-elevated) 48%);
+}
+
+.profile-frequency-streak > svg {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: #f97316;
+}
+
+.profile-frequency-streak > span {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.profile-frequency-streak > strong {
+  grid-column: 2;
+  grid-row: 2;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.profile-frequency-streak > small {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  color: var(--text-tertiary);
+  font-size: 0.65rem;
+}
+
+.profile-frequency-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.profile-frequency-item {
+  display: flex;
+  min-width: 0;
+  min-height: 92px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.profile-frequency-label {
+  color: var(--text-tertiary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.profile-frequency-value {
+  display: grid;
+  grid-template-columns: minmax(2ch, max-content) minmax(0, 1fr) max-content;
+  min-width: 0;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.profile-frequency-value strong {
+  min-width: 2ch;
+  color: var(--text-primary);
+  font-size: 1.55rem;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+.profile-frequency-value span {
+  overflow: hidden;
+  color: var(--text-tertiary);
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-frequency-value small {
+  justify-self: end;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.profile-frequency-progress {
+  height: 4px;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: var(--bg-hover);
+}
+
+.profile-frequency-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width var(--transition-slow);
+}
+
+.profile-frequency-item p {
+  color: var(--text-tertiary);
+  font-size: 0.68rem;
+}
+
+/* ==========================================================================
+   Section Headers & Common
+   ========================================================================== */
+.profile-card-header-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: var(--space-md);
+}
+
+.profile-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.profile-section-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.sub-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   SECTION 1: MUSCLE GROUP ANALYTICS & ANATOMICAL MANNEQUIN
+   ========================================================================== */
+.profile-muscle-analytics-card {
+  border: 1px solid var(--border-subtle);
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(59, 130, 246, 0.055), transparent 34%),
+    var(--bg-card);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.muscle-analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+.muscle-analytics-header .profile-section-title {
+  letter-spacing: -0.025em;
+}
+
+.muscle-analytics-header .profile-section-title > svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+/* Muscle Selector Horizontal Scroll */
+.muscle-selector-scroll {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 3px 1px 8px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.muscle-selector-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.muscle-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px 7px 8px;
+  border-radius: 11px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 650;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.muscle-pill-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: rgba(59, 130, 246, 0.38);
+  transform: translateY(-1px);
+}
+
+.muscle-pill-btn.active {
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--text-primary);
+  border-color: rgba(59, 130, 246, 0.52);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.045), 0 3px 12px rgba(0, 0, 0, 0.14);
+}
+
+.muscle-pill-icon {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 7px;
+  color: var(--text-tertiary);
+  background: rgba(255, 255, 255, 0.045);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.muscle-pill-btn.active .muscle-pill-icon {
+  color: #78adff;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+/* Muscle Analytics Main Grid */
+.muscle-analytics-main-grid {
+  display: grid;
+  grid-template-columns: minmax(290px, 0.78fr) minmax(0, 1.5fr);
+  gap: var(--space-lg);
+  align-items: start;
+  width: 100%;
+}
+
+.anatomy-column {
+  width: 100%;
+}
+
+.analytics-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+/* Stat Counter Cards */
+.muscle-stat-counters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.m-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 75%), var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.m-stat-card.highlight-accent {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.m-stat-card.highlight-flame {
+  border-color: rgba(249, 115, 22, 0.35);
+  background: rgba(249, 115, 22, 0.05);
+}
+
+.m-stat-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.m-stat-card.highlight-flame .m-stat-icon-wrap {
+  color: #f97316;
+}
+
+.m-stat-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.m-stat-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.m-stat-val {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.m-stat-sub {
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
+}
+
+/* Muscle Chart Box */
+.muscle-chart-box {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), transparent 70%), var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chart-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chart-metric-pills,
+.chart-timeframe-pills {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.chart-metric-tab,
+.tf-pill {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chart-metric-tab.active,
+.tf-pill.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.muscle-bars-track-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 140px;
+  padding-top: 24px;
+  gap: 8px;
+}
+
+.muscle-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  height: 100%;
+}
+
+.bar-value-number {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.bar-value-number.zero {
+  color: var(--text-tertiary);
+  opacity: 0.5;
+}
+
+.bar-track-outer {
+  width: 100%;
+  max-width: 38px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.bar-fill-inner {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bar-fill-inner.active {
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.bar-fill-inner.empty {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bar-fill-inner.current-period {
+  background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+.bar-footer-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* PRs Highlights Banner */
+.muscle-prs-highlight-box {
+  background: rgba(234, 179, 8, 0.06);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prs-box-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prs-box-header h4 {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #eab308;
+}
+
+.prs-badges-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pr-trophy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  font-size: 0.75rem;
+}
+
+.pr-ex-name {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pr-weight-val {
+  color: #eab308;
+  font-weight: 900;
+}
+
+.pr-1rm-sub {
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
+}
+
+/* Exercise Ranking Section */
+.muscle-exercises-ranking-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: var(--space-xs);
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-md);
+}
+
+.ranking-section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ranking-hint-tag {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.exercises-ranking-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exercise-ranking-row-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  gap: 12px;
+  transition: all var(--transition-fast);
+}
+
+.exercise-ranking-row-card:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-subtle);
+}
+
+.exercise-ranking-exercise-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-ranking-exercise-info > .exercise-image-preview {
+  flex: 0 0 auto;
+}
+
+.rank-position-col {
+  flex-shrink: 0;
+}
+
+.rank-number-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.rank-number-badge.gold {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+  border-color: rgba(234, 179, 8, 0.4);
+}
+
+.rank-number-badge.silver {
+  background: rgba(148, 163, 184, 0.15);
+  color: #cbd5e1;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.rank-number-badge.bronze {
+  background: rgba(217, 119, 6, 0.15);
+  color: #d97706;
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+.ex-main-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ex-title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-meta-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.chip-item strong {
+  color: var(--text-secondary);
+}
+
+.ex-pr-stats-col {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.stat-pr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.stat-label {
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.stat-val-highlight {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.stat-val-1rm {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #a78bfa;
+}
+
+.empty-muscle-exercises-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 32px 16px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-color);
+}
+
+.empty-icon {
+  color: var(--text-tertiary);
+}
+
+.empty-muscle-exercises-box p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.empty-muscle-exercises-box span {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   SECTION 2: MEASUREMENTS & EVOLUTION HISTORY
+   ========================================================================= */
+.profile-measurements-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-imc-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--bg-elevated);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--space-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.imc-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.imc-tag {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.imc-number-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.imc-number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.imc-label-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  border: 1px solid;
+}
+
+.imc-meta-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.imc-stat-pill {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.imc-stat-pill span {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.imc-stat-pill strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.profile-measurements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.measurement-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--bg-elevated);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.m-label {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.m-val {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Measurements Evolution Banner */
+.measurements-evolution-banner {
+  margin-top: var(--space-md);
+  padding: 14px 16px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.evolution-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.evol-title {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.evol-interval-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(0, 122, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 122, 255, 0.25);
+}
+
+.evol-items-chips-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.evol-chip-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.8125rem;
+}
+
+.chip-label {
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.chip-values {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chip-prev {
+  color: var(--text-tertiary);
+}
+
+.chip-arrow {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+.chip-curr {
+  color: var(--text-primary);
+}
+
+.chip-diff-tag {
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.chip-diff-tag.favorable {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.chip-diff-tag.neutral {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.chip-diff-tag.neutral-change {
+  color: var(--text-secondary);
+  background: var(--bg-card);
+}
+
+.chip-diff-tag.zero {
+  color: var(--text-tertiary);
+  background: var(--bg-elevated);
+}
+
+/* Measurements Timeline */
+.measurements-timeline-wrap {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeline-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.view-all-history-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.timeline-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-timeline-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.entry-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+}
+
+.entry-date {
+  color: var(--text-primary);
+}
+
+.entry-interval {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.entry-metrics-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.m-val-badge strong {
+  color: var(--text-primary);
+}
+
+/* Full History Modal */
+.full-history-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.history-modal-intro {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.full-history-scroll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.full-history-card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.time-interval-tag {
+  font-size: 0.6875rem;
+  color: var(--accent);
+  background: rgba(0, 122, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.delete-measurement-btn {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.delete-measurement-btn:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.metrics-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 6px;
+  font-size: 0.75rem;
+  background: var(--bg-card);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.metrics-grid-compact div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metrics-grid-compact span {
+  color: var(--text-tertiary);
+  font-size: 0.6875rem;
+}
+
+.metrics-grid-compact strong {
+  color: var(--text-primary);
+}
+
+.metrics-grid-compact small {
+  font-size: 0.625rem;
+  line-height: 1.3;
+}
+
+.history-measurement-cell .change-up {
+  color: var(--success);
+}
+
+.history-measurement-cell .change-down {
+  color: var(--error);
+}
+
+.history-measurement-cell .change-flat {
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   SECTION 3: SCHEDULE & CALENDAR
+   ========================================================================== */
+.profile-schedule-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-schedule-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 7px;
+  width: 100%;
+}
+
+.profile-schedule-day-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  min-height: 82px;
+  padding: 9px 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-elevated);
+}
+
+.profile-schedule-day-box.is-workout {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.04);
+}
+
+.profile-schedule-day-box.is-rest {
+  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(139, 92, 246, 0.04);
+}
+
+.p-sched-day-name {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.p-sched-day-icon {
+  display: flex;
+  color: var(--accent);
+}
+
+.profile-schedule-day-box.is-rest .p-sched-day-icon {
+  color: #a78bfa;
+}
+
+.p-sched-workout-text {
+  max-width: 100%;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #38bdf8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.p-sched-rest-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #a78bfa;
+}
+
+/* History Section */
+.profile-history-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.history-section-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.history-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.history-workout-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.history-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.history-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.history-username {
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: block;
+}
+
+.history-timestamp {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.history-routine-badge {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.history-delete-button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--error);
+  cursor: pointer;
+}
+
+.history-delete-button:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.history-delete-button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.history-metrics-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+}
+
+.h-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h-metric-label {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.h-metric-val {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.history-photo-preview img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.history-exercises-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-exercise-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+}
+
+.line-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.line-sets-badge {
+  font-size: 0.6875rem;
+  background: var(--bg-card);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary);
+}
+
+.line-exercise-name {
+  font-weight: 600;
+}
+
+.line-notes-badge {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+}
+
+.history-session-notes {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+/* Modals Forms */
+.measurements-form,
+.schedule-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.modal-imc-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-elevated);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.modal-imc-left span {
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  display: block;
+}
+
+.modal-imc-left strong {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.modal-imc-status {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.measurements-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.m-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.m-input-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.m-input-field input {
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.modal-form-actions,
+.schedule-form-actions,
+.modal-actions-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: var(--space-sm);
+}
+
+/* Schedule Modal */
+.schedule-intro-text {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.schedule-days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.schedule-day-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.schedule-day-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  min-width: 100px;
+}
+
+.schedule-day-controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule-text-input {
+  flex: 1;
+  padding: 6px 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+}
+
+.schedule-rest-indicator-badge {
+  flex: 1;
+  font-size: 0.75rem;
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.btn-toggle-rest {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-toggle-rest.is-rest {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  .muscle-analytics-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-frequency-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-social-counts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .profile-schedule-days-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-page {
+    padding: 0 8px;
+    gap: var(--space-md);
+  }
+
+  .profile-header-card.card-p-lg {
+    padding: 16px;
+  }
+
+  .profile-header-inner {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .profile-avatar {
+    width: 64px !important;
+    height: 64px !important;
+    border-width: 2px;
+  }
+
+  .profile-name-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .profile-username {
+    font-size: 1.25rem;
+    overflow-wrap: anywhere;
+  }
+
+  .profile-header-actions {
+    gap: 6px;
+  }
+
+  .profile-header-actions .btn {
+    min-width: 0;
+    padding: 6px 8px;
+    font-size: 0.6875rem;
+  }
+
+  .profile-social-counts {
+    gap: 7px;
+  }
+
+  .profile-frequency-card.card-p-lg {
+    padding: 16px;
+  }
+
+  .profile-frequency-grid {
+    gap: 7px;
+  }
+
+  .profile-frequency-item {
+    min-height: 82px;
+    gap: 6px;
+    padding: 9px;
+  }
+
+  .profile-frequency-label {
+    font-size: 0.62rem;
+  }
+
+  .profile-frequency-value strong {
+    font-size: 1.35rem;
+  }
+
+  .profile-frequency-value span {
+    font-size: 0.62rem;
+  }
+
+  .count-item {
+    min-height: 58px;
+    padding: 7px 4px;
+  }
+
+  .count-item strong {
+    font-size: 0.9375rem;
+  }
+
+  .count-item span {
+    font-size: 0.625rem;
+  }
+
+  .muscle-stat-counters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-ranking-row-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ex-pr-stats-col {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .measurements-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .m-input-field[style*="span 2"] {
+    grid-column: span 1 !important;
+  }
+
+  .profile-schedule-days-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .profile-schedule-day-box {
+    min-height: 74px;
+    padding: 8px 2px;
+    gap: 5px;
+  }
+
+  .p-sched-day-name {
+    font-size: 0.56rem;
+  }
+
+  .p-sched-workout-text {
+    font-size: 0.58rem;
+  }
+
+  .profile-frequency-streak {
+    grid-template-columns: 15px minmax(0, 1fr) auto;
+    gap: 4px 5px;
+    padding: 9px 7px;
+  }
+
+  .profile-frequency-streak > span {
+    font-size: 0.65rem;
+    overflow-wrap: anywhere;
+  }
+
+  .profile-frequency-streak > strong {
+    font-size: 1rem;
+  }
+
+  .profile-frequency-streak > small {
+    font-size: 0.58rem;
+  }
+}
+
+.profile-progress-view {
+  gap: 12px;
+}
+
+.profile-progress-view .profile-muscle-analytics-card.card-p-lg,
+.profile-progress-view .profile-measurements-card.card-p-lg,
+.profile-progress-view .profile-frequency-card.card-p-lg,
+.profile-progress-view .profile-annual-activity-card.card-p-lg {
+  padding: clamp(12px, 2.2vw, 18px);
+}
+
+.profile-progress-view .profile-muscle-analytics-card,
+.profile-progress-view .profile-measurements-card {
+  gap: 12px;
+}
+
+.profile-progress-view .muscle-analytics-main-grid {
+  gap: 12px;
+}
+
+.profile-progress-view .anatomy-mannequin-container {
+  gap: 9px;
+  padding: 10px;
+}
+
+.profile-progress-view .muscle-stat-counters-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.profile-progress-view .m-stat-card {
+  min-height: 0;
+  gap: 8px;
+  padding: 10px;
+}
+
+.profile-progress-view .m-stat-icon-wrap {
+  width: 32px;
+  height: 32px;
+}
+
+.profile-progress-view .m-stat-val {
+  font-size: 1.05rem;
+}
+
+.profile-progress-view .profile-imc-banner {
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 12px;
+}
+
+.profile-progress-view .profile-measurements-grid {
+  gap: 8px;
+}
+
+.profile-progress-view .measurement-cell {
+  gap: 3px;
+  padding: 8px;
+}
+
+.profile-progress-view .m-val {
+  font-size: 1rem;
+}
+
+.profile-progress-view .measurements-evolution-banner {
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.profile-progress-view .evol-chip-card {
+  gap: 6px;
+  padding: 5px 8px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 480px) {
+  .profile-progress-view .muscle-stat-counters-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-progress-view .profile-measurements-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .profile-progress-view .m-stat-card {
+    align-items: flex-start;
+  }
+
+  .profile-progress-view .m-stat-label {
+    font-size: 0.63rem;
+  }
+
+  .profile-progress-view .m-stat-sub {
+    font-size: 0.62rem;
+  }
+}
+
+.profile-progress-heading {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+
+.profile-progress-heading > div {
+  display: grid;
+  gap: 4px;
+}
+
+.profile-progress-heading > div > span {
+  color: var(--accent);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.profile-progress-heading h1 {
+  color: var(--text-primary);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 900;
+}
+
+.profile-progress-heading p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.profile-progress-entry {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
+}
+
+.profile-progress-entry:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+}
+
+.profile-progress-entry-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+.profile-progress-entry-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 4px;
+}
+
+.profile-progress-entry-copy strong {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.profile-progress-entry-copy small {
+  overflow: hidden;
+  color: var(--text-tertiary);
+  font-size: 0.74rem;
+  text-overflow: ellipsis;
+}
+
+.profile-progress-entry > svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .profile-progress-entry {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .profile-progress-entry-icon {
+    width: 38px;
+    height: 38px;
+  }
+}

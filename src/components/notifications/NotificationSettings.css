@@ -1,0 +1,92 @@
+.notification-settings-card {
+  gap: var(--space-lg);
+}
+
+.notification-enable-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 14px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.notification-enable-row strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.notification-settings-error {
+  margin: 0;
+  color: var(--error);
+  font-size: 0.8125rem;
+}
+
+.notification-preferences-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-preference-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 2px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.notification-preference-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.notification-preference-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.notification-preference-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.notification-preference-copy strong {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.notification-preference-copy > span {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.notification-preference-row input {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .notification-enable-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .notification-enable-row .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+}

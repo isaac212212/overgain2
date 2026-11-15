@@ -1,0 +1,237 @@
+.modal-content.weekly-schedule-modal {
+  width: min(100%, 680px);
+  max-height: min(92dvh, 900px);
+  box-sizing: border-box;
+}
+
+.weekly-schedule-modal .modal-body {
+  min-width: 0;
+  padding: 20px;
+}
+
+.weekly-schedule-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.weekly-goal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.weekly-goal-section > label {
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.weekly-goal-options {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.weekly-goal-option {
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.weekly-goal-option.active {
+  border-color: var(--accent);
+  background: var(--accent-muted);
+  color: var(--accent);
+}
+
+.weekly-goal-current {
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+}
+
+.weekly-goal-current strong {
+  color: var(--text-primary);
+}
+
+.weekly-schedule-intro {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.weekly-schedule-days {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  max-height: min(48dvh, 460px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.weekly-schedule-day {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+}
+
+.weekly-schedule-day-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.weekly-schedule-day-header strong {
+  min-width: 0;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+}
+
+.weekly-schedule-rest-toggle {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.weekly-schedule-rest-toggle.is-rest {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(139, 92, 246, 0.14);
+  color: #a78bfa;
+}
+
+.weekly-schedule-name-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.weekly-schedule-name-input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.weekly-schedule-rest-status {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px dashed rgba(139, 92, 246, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.weekly-schedule-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .modal-content.weekly-schedule-modal {
+    width: 100%;
+    max-height: calc(100dvh - env(safe-area-inset-top, 0px));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .weekly-schedule-modal .modal-body {
+    padding: 14px;
+  }
+
+  .weekly-schedule-form {
+    gap: 12px;
+  }
+
+  .weekly-goal-section {
+    padding: 10px;
+  }
+
+  .weekly-goal-options {
+    gap: 4px;
+  }
+
+  .weekly-schedule-days {
+    max-height: min(46dvh, 420px);
+  }
+
+  .weekly-schedule-day {
+    padding: 10px;
+  }
+
+  .weekly-schedule-day-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .weekly-schedule-rest-toggle {
+    padding-inline: 8px;
+    font-size: 0.75rem;
+  }
+
+  .weekly-schedule-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  }
+
+  .weekly-schedule-actions > button {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .weekly-schedule-day-header {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .weekly-schedule-rest-toggle {
+    width: 100%;
+  }
+}

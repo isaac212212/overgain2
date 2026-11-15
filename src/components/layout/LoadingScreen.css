@@ -1,0 +1,79 @@
+.app-loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(59, 130, 246, 0.12), transparent 42%),
+    var(--bg-primary, #000);
+  color: var(--text-primary, #fff);
+}
+
+.app-loading-brand {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 240px);
+}
+
+.app-loading-mark {
+  display: block;
+  width: 82px;
+  height: 82px;
+  margin-bottom: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 0 42px rgba(59, 130, 246, 0.24);
+  object-fit: cover;
+}
+
+.app-loading-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.app-loading-message {
+  color: var(--text-tertiary, #888);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.app-loading-progress {
+  position: relative;
+  display: block;
+  width: 148px;
+  height: 3px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: var(--radius-full, 999px);
+  background: var(--bg-elevated, #222);
+}
+
+.app-loading-progress > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 42%;
+  border-radius: inherit;
+  background: var(--accent, #3b82f6);
+  box-shadow: 0 0 12px var(--accent, #3b82f6);
+  animation: overgain-loading-progress 1.25s ease-in-out infinite;
+}
+
+@keyframes overgain-loading-progress {
+  from { transform: translateX(-105%); }
+  to { transform: translateX(250%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-loading-progress > span {
+    animation: none;
+    transform: translateX(35%);
+  }
+}

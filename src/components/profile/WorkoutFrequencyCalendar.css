@@ -1,0 +1,354 @@
+.profile-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.profile-section-title > svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.profile-section-subtitle {
+  margin-top: 2px;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+.profile-cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.cal-nav-btn {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.cal-nav-title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.profile-cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.profile-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.profile-cal-cell {
+  display: flex;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+}
+
+.profile-cal-cell.calendar-day-blank {
+  border-color: transparent;
+  background: transparent;
+  opacity: 0.15;
+}
+
+.profile-cal-cell.status-done {
+  border-color: #22c55e;
+  background: #22c55e;
+  color: #000;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+.profile-cal-cell.status-rest {
+  border-color: rgba(59, 130, 246, 0.65);
+  background: #3b82f6;
+  color: #08111f;
+  font-weight: 800;
+}
+
+.profile-cal-cell.status-missed {
+  border-color: rgba(239, 68, 68, 0.75);
+  background: #ef4444;
+  color: #fff;
+  font-weight: 800;
+}
+
+.profile-annual-activity-card {
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.profile-annual-activity-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.annual-activity-year-switcher {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+}
+
+.annual-activity-year-switcher button {
+  min-width: 56px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.annual-activity-year-switcher button.is-active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.annual-activity-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 12px;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+.annual-activity-summary strong {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.annual-calendar-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-color: var(--border-subtle) transparent;
+  scrollbar-width: thin;
+}
+
+.annual-calendar-inner {
+  min-width: 740px;
+}
+
+.annual-calendar-months {
+  display: grid;
+  grid-template-columns: repeat(var(--annual-week-count), minmax(0, 1fr));
+  height: 20px;
+  margin-left: 32px;
+  color: var(--text-tertiary);
+  font-size: 0.61rem;
+  text-transform: capitalize;
+}
+
+.annual-calendar-months span {
+  white-space: nowrap;
+}
+
+.annual-calendar-chart {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 4px;
+}
+
+.annual-calendar-weekdays {
+  display: grid;
+  grid-template-rows: repeat(7, 11px);
+  gap: 3px;
+  color: var(--text-tertiary);
+  font-size: 0.57rem;
+  line-height: 11px;
+}
+
+.annual-calendar-weeks {
+  display: grid;
+  grid-template-columns: repeat(var(--annual-week-count), minmax(0, 1fr));
+  grid-template-rows: repeat(7, 11px);
+  grid-auto-flow: column;
+  gap: 3px;
+}
+
+.annual-calendar-week {
+  display: contents;
+}
+
+.annual-calendar-day {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 2px;
+  background: var(--bg-hover);
+}
+
+.annual-calendar-day[data-status="done"][data-level="1"] {
+  border-color: rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.55);
+}
+
+.annual-calendar-day[data-status="done"][data-level="2"] {
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(34, 197, 94, 0.78);
+}
+
+.annual-calendar-day[data-status="done"][data-level="3"] {
+  border-color: #22c55e;
+  background: #22c55e;
+}
+
+.annual-calendar-day[data-status="rest"] {
+  border-color: rgba(59, 130, 246, 0.65);
+  background: #3b82f6;
+}
+
+.annual-calendar-day[data-status="missed"] {
+  border-color: rgba(239, 68, 68, 0.75);
+  background: #ef4444;
+}
+
+.annual-calendar-day.is-empty {
+  visibility: hidden;
+}
+
+.profile-calendar-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 9px;
+  color: var(--text-tertiary);
+  font-size: 0.62rem;
+}
+
+.profile-calendar-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.calendar-status-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--bg-hover);
+}
+
+.calendar-status-swatch.is-done {
+  background: #22c55e;
+}
+
+.calendar-status-swatch.is-rest {
+  background: #3b82f6;
+}
+
+.calendar-status-swatch.is-missed {
+  background: #ef4444;
+}
+
+.calendar-status-swatch.is-upcoming {
+  border: 1px solid var(--border-subtle);
+}
+
+.profile-calendar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profile-calendar-view-switcher {
+  display: inline-flex;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+}
+
+.profile-calendar-view-switcher button {
+  min-width: 62px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.profile-calendar-view-switcher button.is-active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.profile-monthly-calendar {
+  margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .profile-calendar-legend {
+    gap: 8px 10px;
+    font-size: 0.58rem;
+  }
+
+  .profile-annual-activity-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-calendar-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .annual-activity-year-switcher button {
+    min-width: 48px;
+    padding: 7px 8px;
+  }
+
+  .profile-calendar-view-switcher button {
+    min-width: 54px;
+    padding: 7px 8px;
+  }
+}

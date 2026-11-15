@@ -1,0 +1,489 @@
+.anatomy-mannequin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background:
+    linear-gradient(160deg, rgba(59, 130, 246, 0.045), transparent 42%),
+    var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-stage {
+  background: #090a0b;
+  padding: 8px 4px 6px;
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-stage::after {
+  display: none;
+}
+
+.anatomy-mannequin-container.reference-style .anatomy-map-mark {
+  color: #ff6b78;
+  background: rgba(225, 29, 46, 0.12);
+  border-color: rgba(225, 29, 46, 0.22);
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-view-label {
+  background: #1a1d20;
+  border-color: #3a4046;
+  color: #c4cbd2;
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-base-part {
+  fill: #b7bbbe;
+  stroke: #555b60;
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-silhouette {
+  fill: #aeb2b5;
+  stroke: #4a5055;
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-detail-lines path {
+  stroke: rgba(50, 56, 61, 0.82);
+}
+
+.anatomy-mannequin-container.reference-style .muscle-path.base-muscle {
+  fill: #c8cbcd;
+  stroke: #555b60;
+}
+
+.anatomy-mannequin-container.reference-style .muscle-path.base-muscle:hover {
+  fill: #e2e4e5;
+  stroke: #353a3e;
+}
+
+.anatomy-mannequin-container.reference-style .muscle-path.active-muscle {
+  fill: #e11d2e;
+  stroke: #ff9aa4;
+  filter: drop-shadow(0 0 5px rgba(225, 29, 46, 0.48));
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-active-badge {
+  border-color: rgba(225, 29, 46, 0.26);
+  background: rgba(225, 29, 46, 0.08);
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-active-badge strong {
+  color: #ff6b78;
+}
+
+.anatomy-mannequin-container.reference-style .mannequin-active-badge .badge-dot {
+  background: #e11d2e;
+  box-shadow: 0 0 10px rgba(225, 29, 46, 0.55);
+}
+
+.anatomy-map-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.anatomy-map-mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  color: #85b5ff;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 10px;
+}
+
+.anatomy-map-heading > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.anatomy-map-title {
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.anatomy-map-caption {
+  color: var(--text-tertiary);
+  font-size: 0.6875rem;
+}
+
+.anatomy-map-index {
+  margin-left: auto;
+  color: var(--text-tertiary);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.mannequin-stage {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 7px 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 50% 34%, rgba(59, 130, 246, 0.1), transparent 58%),
+    linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+    var(--bg-secondary);
+  background-size: auto, 22px 22px, 22px 22px, auto;
+}
+
+.mannequin-stage::after {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 50%;
+  width: 1px;
+  content: "";
+  background: linear-gradient(transparent, rgba(148, 163, 184, 0.12) 18%, rgba(148, 163, 184, 0.12) 82%, transparent);
+  pointer-events: none;
+}
+
+.mannequin-figures-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.mannequin-figure-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  max-width: 160px;
+}
+
+.mannequin-view-label {
+  padding: 4px 9px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-tertiary);
+  font-size: 0.5625rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.anatomy-mannequin-container.reference-style .anatomy-svg {
+  max-height: 240px;
+}
+
+.anatomy-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 290px;
+  overflow: visible;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.28));
+}
+
+.mannequin-base-part {
+  fill: #202a39;
+  stroke: #425168;
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+}
+
+.mannequin-silhouette {
+  fill: #1c2634;
+  stroke: #4a5d75;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.mannequin-detail-lines {
+  fill: none;
+  pointer-events: none;
+}
+
+.mannequin-detail-lines path {
+  stroke: rgba(178, 199, 224, 0.48);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.muscle-path {
+  cursor: pointer;
+  stroke-linejoin: round;
+  transition: fill 180ms ease, stroke 180ms ease, filter 180ms ease;
+}
+
+.muscle-path.base-muscle {
+  fill: #34445a;
+  stroke: #536780;
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+}
+
+.muscle-path.base-muscle:hover {
+  fill: #465d79;
+  stroke: #8cb8f0;
+}
+
+.muscle-path.active-muscle {
+  fill: #3b82f6;
+  stroke: #a7ceff;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.48));
+  vector-effect: non-scaling-stroke;
+}
+
+.muscle-path:focus-visible {
+  outline: none;
+  stroke: #ffffff;
+  stroke-width: 2.4;
+}
+
+.mannequin-active-badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  align-self: stretch;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 11px;
+  background: rgba(59, 130, 246, 0.07);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.mannequin-active-badge strong {
+  color: var(--text-primary);
+  font-weight: 750;
+}
+
+.mannequin-active-badge .badge-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #60a5fa;
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.55);
+}
+
+.anatomy-mannequin-container.compact {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  min-width: 68px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, #f8fafc, #e2e8f0 75%);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.8), 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.anatomy-mannequin-container.compact.exercise-thumbnail {
+  width: 76px;
+  height: 120px;
+  min-width: 76px;
+  padding: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at 50% 32%, rgba(225, 29, 46, 0.08), transparent 58%),
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    #101214;
+  background-size: auto, 14px 14px, 14px 14px, auto;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.04);
+}
+
+.anatomy-mannequin-container.compact.exercise-thumbnail .mannequin-stage {
+  width: 100%;
+  height: 100%;
+}
+
+.anatomy-mannequin-container.compact.exercise-thumbnail .mannequin-figure-box {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: none;
+}
+
+.anatomy-mannequin-container.compact.exercise-thumbnail .anatomy-svg {
+  width: auto;
+  height: 110px;
+  max-width: 100%;
+  max-height: 100%;
+  filter: none;
+}
+
+.anatomy-mannequin-container.compact .mannequin-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.anatomy-mannequin-container.compact .mannequin-stage::after {
+  display: none;
+}
+
+.anatomy-mannequin-container.compact .mannequin-figures-row {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0;
+}
+
+.anatomy-mannequin-container.compact .mannequin-figure-box {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 100%;
+  max-width: none;
+  gap: 0;
+  justify-content: center;
+}
+
+.anatomy-mannequin-container.compact .mannequin-view-label {
+  display: none;
+}
+
+.anatomy-mannequin-container.compact .anatomy-svg {
+  width: 38px;
+  height: 68px;
+  max-height: none;
+  filter: none;
+}
+
+.anatomy-mannequin-container.compact .mannequin-base-part {
+  fill: #d6d3d1;
+  stroke: #78716c;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.anatomy-mannequin-container.compact .mannequin-silhouette {
+  fill: #e7e5e4;
+  stroke: #78716c;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.anatomy-mannequin-container.compact .mannequin-detail-lines path {
+  stroke: rgba(87, 83, 78, 0.72);
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.anatomy-mannequin-container.compact .muscle-path.base-muscle {
+  fill: #a8a29e;
+  stroke: #78716c;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.anatomy-mannequin-container.compact .muscle-path.active-muscle {
+  fill: #3b82f6;
+  stroke: #d6e8ff;
+  stroke-width: 2.4;
+  filter: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.anatomy-mannequin-container.compact .muscle-path {
+  cursor: default;
+  pointer-events: none;
+  transition: none;
+}
+
+.anatomy-mannequin-container.compact.reference-style {
+  width: 76px;
+  height: 68px;
+  min-width: 76px;
+  border-color: #343a40;
+  border-radius: 12px;
+  background: #101214;
+  box-shadow: none;
+}
+
+.anatomy-mannequin-container.compact.reference-style .mannequin-stage {
+  background: none;
+}
+
+.anatomy-mannequin-container.compact.reference-style .mannequin-figure-box {
+  flex: 0 0 31px;
+  width: 31px;
+}
+
+.anatomy-mannequin-container.compact.reference-style .anatomy-svg {
+  width: 31px;
+  height: 60px;
+}
+
+.anatomy-mannequin-container.compact.reference-style .mannequin-base-part {
+  fill: #101316;
+  stroke: #7d858e;
+  stroke-width: 1.2;
+}
+
+.anatomy-mannequin-container.compact.reference-style .mannequin-silhouette {
+  fill: #0b0d10;
+  stroke: #a7afb8;
+  stroke-width: 1.2;
+}
+
+.anatomy-mannequin-container.compact.reference-style .mannequin-detail-lines path {
+  stroke: rgba(168, 178, 188, 0.55);
+  stroke-width: 1;
+}
+
+.anatomy-mannequin-container.compact.reference-style .muscle-path.base-muscle {
+  fill: #171b20;
+  stroke: #747d86;
+  stroke-width: 1.1;
+}
+
+.anatomy-mannequin-container.compact.reference-style .muscle-path.active-muscle {
+  stroke-width: 1.25;
+}
+
+@media (max-width: 480px) {
+  .anatomy-mannequin-container {
+    padding: 13px;
+  }
+
+  .mannequin-stage {
+    padding: 12px 4px 8px;
+  }
+
+  .mannequin-figures-row {
+    gap: 7px;
+  }
+
+  .anatomy-svg {
+    max-height: 245px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .muscle-path {
+    transition: none;
+  }
+}
