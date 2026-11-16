@@ -323,6 +323,7 @@ export default function LoginPage() {
           <a
             href="/Overgain.apk"
             download="Overgain.apk"
+            rel="noopener noreferrer"
             className="login-apk-btn"
           >
             <Download size={16} />

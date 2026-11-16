@@ -15,6 +15,7 @@ import {
   Check, 
   ShieldCheck,
   Smartphone,
+  Download,
   AlertTriangle
 } from 'lucide-react';
 import Button from '../components/ui/Button';
@@ -345,6 +346,27 @@ export default function SettingsPage() {
           </Button>
         </div>
       </form>
+
+      {/* App Android (APK) */}
+      <Card className="settings-card" padding="lg">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+          <Smartphone size={22} className="text-accent" />
+          <h2 className="settings-card-title" style={{ margin: 0 }}>Aplicativo Android (APK)</h2>
+        </div>
+        <p className="text-muted text-sm" style={{ marginBottom: 16 }}>
+          Instale o app diretamente no seu celular Android. Funciona 100% offline para registrar seus treinos mesmo sem internet.
+        </p>
+        <a
+          href="/Overgain.apk"
+          download="Overgain.apk"
+          rel="noopener noreferrer"
+          className="login-apk-btn"
+          style={{ width: 'fit-content', padding: '10px 20px', textDecoration: 'none' }}
+        >
+          <Download size={18} />
+          <span>Baixar App Android (.apk)</span>
+        </a>
+      </Card>
 
       {/* Account & Data Management */}
       <Card className="settings-card danger-zone-card" padding="lg">

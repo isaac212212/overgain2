@@ -3,10 +3,6 @@
   "appName": "Overgain",
   "webDir": "dist",
   "bundledWebRuntime": false,
-  "server": {
-    "url": "https://overgain.vercel.app",
-    "cleartext": true
-  },
   "plugins": {
     "PushNotifications": {
       "presentationOptions": []

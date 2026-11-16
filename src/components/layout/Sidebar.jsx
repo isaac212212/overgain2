@@ -38,6 +38,7 @@ export default function Sidebar() {
         <a
           href="/Overgain.apk"
           download="Overgain.apk"
+          rel="noopener noreferrer"
           className="sidebar-apk-btn"
           title="Baixar App Android (.apk)"
         >
