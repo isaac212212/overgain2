@@ -912,14 +912,20 @@ export const syncFullAccountToCloud = async (user) => {
     updatedAt: new Date().toISOString()
   };
 
-  const { error: profileError } = await supabase.from('profiles').upsert({
-    id: cleanUser.id,
-    name: cleanUser.name,
-    username: cleanUser.username,
-    avatar_url: cleanUser.avatar,
-    updated_at: cleanUser.updatedAt
-  });
-  if (profileError) throw profileError;
+  try {
+    const { error: profileError } = await supabase.from('profiles').upsert({
+      id: cleanUser.id,
+      name: cleanUser.name,
+      username: cleanUser.username,
+      avatar_url: cleanUser.avatar,
+      updated_at: cleanUser.updatedAt
+    });
+    if (profileError) {
+      console.warn('Aviso ao sincronizar profiles (ignorado):', profileError.message);
+    }
+  } catch (pErr) {
+    console.warn('Exceção ao sincronizar profiles:', pErr);
+  }
 
   await syncUserData(user.id, 'account_data', cleanUser);
   return cleanUser;
@@ -928,11 +934,11 @@ export const syncFullAccountToCloud = async (user) => {
 export const fetchCloudAccount = async (userId) => {
   if (!supabase || !userId) return null;
   try {
-    const [{ data: profile, error }, accountData] = await Promise.all([
-      supabase.from('profiles').select('id,name,username,avatar_url').eq('id', userId).maybeSingle(),
-      fetchUserData(userId, 'account_data', {})
+    const [profileRes, accountData] = await Promise.all([
+      supabase.from('profiles').select('id,name,username,avatar_url').eq('id', userId).maybeSingle().catch(e => ({ error: e })),
+      fetchUserData(userId, 'account_data', {}).catch(() => ({}))
     ]);
-    if (error) throw error;
+    const profile = profileRes?.data;
     if (!profile && !accountData) return null;
     return {
       ...accountData,
@@ -945,7 +951,7 @@ export const fetchCloudAccount = async (userId) => {
     };
   } catch (err) {
     console.error('Exceção ao buscar conta por ID no Supabase:', err);
-    throw err;
+    return null;
   }
 };
 
@@ -1018,17 +1024,24 @@ export const isUsernameOrNameTaken = async (name, username, excludeUserId = null
   if (!supabase) return { isTaken: false };
   const cleanName = (name || '').trim().toLowerCase();
   const cleanUser = (username || '').trim().toLowerCase();
-  const { data, error } = await supabase.from('profiles').select('id,name,username');
-  if (error) throw error;
+  try {
+    const { data, error } = await supabase.from('profiles').select('id,name,username');
+    if (error) {
+      console.warn('isUsernameOrNameTaken aviso (ignorado):', error.message);
+      return { isTaken: false };
+    }
 
-  for (const profile of data || []) {
-    if (excludeUserId && String(profile.id) === String(excludeUserId)) continue;
-    if (profile.name?.trim().toLowerCase() === cleanName) {
-      return { isTaken: true, field: 'name', message: 'Este nome de perfil já está em uso por outro atleta. Escolha outro.' };
+    for (const profile of data || []) {
+      if (excludeUserId && String(profile.id) === String(excludeUserId)) continue;
+      if (profile.name?.trim().toLowerCase() === cleanName) {
+        return { isTaken: true, field: 'name', message: 'Este nome de perfil já está em uso por outro atleta. Escolha outro.' };
+      }
+      if (profile.username?.trim().toLowerCase() === cleanUser) {
+        return { isTaken: true, field: 'username', message: 'Este nome de usuário (@' + profile.username + ') já está em uso. Escolha outro.' };
+      }
     }
-    if (profile.username?.trim().toLowerCase() === cleanUser) {
-      return { isTaken: true, field: 'username', message: 'Este nome de usuário (@' + profile.username + ') já está em uso. Escolha outro.' };
-    }
+  } catch (err) {
+    console.warn('isUsernameOrNameTaken catch (ignorado):', err);
   }
   return { isTaken: false };
 };

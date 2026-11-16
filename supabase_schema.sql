@@ -705,21 +705,10 @@ CREATE POLICY "Usuários gerenciam as próprias métricas privadas"
 REVOKE ALL ON public.profile_training_metrics FROM PUBLIC, anon;
 GRANT SELECT, INSERT, UPDATE, DELETE ON public.profile_training_metrics TO authenticated;
 
--- Do not expose private profile metrics through the public profiles table.
-REVOKE SELECT ON public.profiles FROM PUBLIC, anon, authenticated;
-REVOKE SELECT (weekly_goal, streak, weekly_streak, gender)
-  ON public.profiles FROM PUBLIC, anon, authenticated;
-GRANT SELECT (id, name, username, avatar_url, created_at, updated_at)
-  ON public.profiles TO PUBLIC, anon, authenticated;
-REVOKE INSERT, UPDATE ON public.profiles FROM PUBLIC, anon, authenticated;
-REVOKE INSERT (id, name, username, avatar_url, weekly_goal, streak, weekly_streak, gender, created_at, updated_at)
-  ON public.profiles FROM PUBLIC, anon, authenticated;
-REVOKE UPDATE (id, name, username, avatar_url, weekly_goal, streak, weekly_streak, gender, created_at, updated_at)
-  ON public.profiles FROM PUBLIC, anon, authenticated;
-GRANT INSERT (id, name, username, avatar_url, updated_at)
-  ON public.profiles TO authenticated;
-GRANT UPDATE (name, username, avatar_url, updated_at)
-  ON public.profiles TO authenticated;
+-- Permissions for public.profiles
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.profiles TO authenticated;
+GRANT ALL ON public.profiles TO service_role;
+GRANT SELECT ON public.profiles TO anon;
 
 CREATE OR REPLACE FUNCTION public.get_shared_profile_data(p_profile_id UUID)
 RETURNS JSONB
